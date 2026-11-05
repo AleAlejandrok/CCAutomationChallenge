@@ -14,9 +14,9 @@ public class IkeaTest extends BaseTest {
         ikea.homePage.open();
 
         ikea.homePage.ribbonSearch("sofa");
-        ikea.searchResults.addNthProductToCart(1); // 1-based position
+        ikea.searchResults.addNthProductToCart(1);
 
-        ikea.homePage.ribbonSearch("table");
+        ikea.searchResults.ribbonSearch("table");
         ikea.searchResults.addNthProductToCart(3);
 
         ikea.cart.open();

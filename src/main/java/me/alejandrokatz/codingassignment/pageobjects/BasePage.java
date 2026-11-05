@@ -54,7 +54,9 @@ public abstract class BasePage {
     }
 
     protected void writeText(By locator, String text) {
-        WebElement element = this.getElement(locator);
+        WebElement element = getElement(locator);
+        element.sendKeys(Keys.chord(Keys.COMMAND, "a"), Keys.BACK_SPACE);
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE);
         element.clear();
         element.sendKeys(text);
     }

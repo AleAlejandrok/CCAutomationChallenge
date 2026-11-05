@@ -38,7 +38,7 @@ public class NameUtilityTest {
     }
 
     @Test
-    @DisplayName("Should handle empty, blank, or null strings safely without crashing")
+    @DisplayName("Should handle empty, blank, or null strings gracefully")
     public void testEdgeCaseEmptyAndNull() {
         assertEquals("", NameUtility.convertNameToInitials(""));
         assertEquals("", NameUtility.convertNameToInitials("   "));
