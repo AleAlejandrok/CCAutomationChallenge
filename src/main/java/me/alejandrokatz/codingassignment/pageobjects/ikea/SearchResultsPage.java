@@ -32,7 +32,7 @@ public class SearchResultsPage extends BasePage {
                 addToCartButton = card.findElement(ADD_TO_CART_BUTTON);
                 addToCartButton.click();
                 return true;
-            } catch (StaleElementReferenceException e) {
+            } catch (StaleElementReferenceException | NoSuchElementException e) {
                 return null;
             }
         });

@@ -21,23 +21,23 @@ public class CartPage extends BasePage {
     }
 
     public void clickDiscountButton() {
-        this.click(SHOW_DISCOUNT_CODE_INPUT_BUTTON);
+        click(SHOW_DISCOUNT_CODE_INPUT_BUTTON);
     }
 
     public void inputDiscountCode(String code) {
-        this.writeText(DISCOUNT_CODE_INPUT, code);
+        writeText(DISCOUNT_CODE_INPUT, code);
     }
 
     public void clickApplyDiscountButton() {
-        this.click(APPLY_DISCOUNT_CODE_BUTTON);
+        click(APPLY_DISCOUNT_CODE_BUTTON);
     }
 
     public String getDiscountCodeErrorMessage() {
-        return this.readText(DISCOUNT_CODE_ERROR_MESSAGE);
+        return readText(DISCOUNT_CODE_ERROR_MESSAGE);
     }
 
     public int getTotalItemCount() {
-        List<WebElement> quantityInputs = this.findAllVisible(QUANTITY_INPUT);
+        List<WebElement> quantityInputs = findAllVisible(QUANTITY_INPUT);
         int total = 0;
         for (WebElement input : quantityInputs) {
             String value = input.getAttribute("value");

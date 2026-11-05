@@ -62,7 +62,7 @@ public abstract class BasePage {
     }
 
     protected String readText(By locator) {
-        return this.getElement(locator).getText();
+        return getElement(locator).getText();
     }
 
     protected List<WebElement> findAllVisible(By locator) {
@@ -84,6 +84,6 @@ public abstract class BasePage {
     public void ribbonSearch(String term) {
         scrollToTop();
         writeText(RIBBON_SEARCH_INPUT, term);
-        driver.findElement(RIBBON_SEARCH_INPUT).sendKeys(Keys.ENTER);
+        getElement(RIBBON_SEARCH_INPUT).sendKeys(Keys.ENTER);
     }
 }

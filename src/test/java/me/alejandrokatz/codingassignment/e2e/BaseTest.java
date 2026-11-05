@@ -17,6 +17,10 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized", "--disable-extensions");
 
+        if (Boolean.getBoolean("headless") || Boolean.parseBoolean(System.getenv("CI"))) {
+            options.addArguments("--headless=new", "--window-size=1920,1080");
+        }
+
         driver = new ChromeDriver(options);
         ikea = new Ikea(driver);
     }

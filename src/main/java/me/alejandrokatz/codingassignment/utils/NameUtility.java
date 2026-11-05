@@ -21,6 +21,11 @@ public class NameUtility {
 */
 
 public class NameUtility {
+
+    private NameUtility() {
+        // Utility class
+    }
+
     /**
      * Converts a full name into a string of initials
      *
