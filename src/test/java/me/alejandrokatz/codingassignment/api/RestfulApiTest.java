@@ -13,7 +13,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.everyItem;
 
-
 public class RestfulApiTest {
     @BeforeAll
     public static void setup() {
@@ -31,4 +30,3 @@ public class RestfulApiTest {
         assertThat("Names missing 'Apple'", names, everyItem(containsString("Apple")));
     }
 }
-

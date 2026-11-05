@@ -7,6 +7,6 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        this.URL = "https://www.ikea.com/us/en/";
+        this.url = "https://www.ikea.com/us/en/";
     }
 }

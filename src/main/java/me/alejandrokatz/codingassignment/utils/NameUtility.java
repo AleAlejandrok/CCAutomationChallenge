@@ -34,7 +34,7 @@ public class NameUtility {
 
         String[] names = input.split("\\s+");
         StringBuilder sb = new StringBuilder();
-        for( String name : names) {
+        for (String name : names) {
             if (!name.isEmpty()) {
                 sb.append(name.substring(0, 1).toUpperCase()).append(".");
             }

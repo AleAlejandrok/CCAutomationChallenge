@@ -5,26 +5,27 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-public class SearchResults extends BasePage {
+public class SearchResultsPage extends BasePage {
 
     private static final By PRODUCT_CARD = By.cssSelector("[data-testid='plp-product-card']");
     private static final By ADD_TO_CART_BUTTON = By.cssSelector("button:has(use[href='#plp-add_to_cart-'])");
 
-    public SearchResults(WebDriver driver) {
+    public SearchResultsPage(WebDriver driver) {
         super(driver);
-        this.URL = "https://www.ikea.com/us/en/search/";
+        this.url = "https://www.ikea.com/us/en/search/";
     }
 
     public void addNthProductToCart(int n) {
         wait.until(driver -> {
             try {
                 List<WebElement> cards = driver.findElements(PRODUCT_CARD);
-                if (cards.size() < n) return null;
+                if (cards.size() < n) {
+                    return null;
+                }
 
                 WebElement card = cards.get(n - 1);
                 WebElement addToCartButton = card.findElement(ADD_TO_CART_BUTTON);
-                ((JavascriptExecutor) driver).executeScript(
-                        "arguments[0].scrollIntoView({block: 'center'});", addToCartButton);
+                scrollIntoViewCenter(addToCartButton);
 
                 cards = driver.findElements(PRODUCT_CARD);
                 card = cards.get(n - 1);

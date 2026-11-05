@@ -2,24 +2,19 @@ package me.alejandrokatz.codingassignment.pageobjects;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.pagefactory.ByChained;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-import java.net.URL;
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected String URL;
+    protected String url;
 
     private static final By RIBBON_SEARCH_INPUT = By.id("ikea-search-input");
-    private static final By COOKIE_DISMISS_BUTTOn = By.id("onetrust-accept-btn-handler");
+    private static final By COOKIE_DISMISS_BUTTON = By.id("onetrust-accept-btn-handler");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -27,14 +22,14 @@ public abstract class BasePage {
     }
 
     public void open() {
-        driver.get(this.URL);
+        driver.get(this.url);
         dismissCookieBanner();
     }
 
     protected void dismissCookieBanner() {
         try {
             WebElement acceptButton = new WebDriverWait(driver, Duration.ofSeconds(5))
-                    .until(ExpectedConditions.elementToBeClickable(COOKIE_DISMISS_BUTTOn));
+                    .until(ExpectedConditions.elementToBeClickable(COOKIE_DISMISS_BUTTON));
             acceptButton.click();
         } catch (Exception ignored) {}
     }
@@ -50,10 +45,9 @@ public abstract class BasePage {
 
     protected void click(By locator) {
         WebElement element = getElement(locator);
-        try{
+        try {
             element.click();
-        }
-        catch (ElementClickInterceptedException ignored) {
+        } catch (ElementClickInterceptedException ignored) {
             new Actions(driver).scrollToElement(element).perform();
             element.click();
         }
@@ -69,18 +63,20 @@ public abstract class BasePage {
         return this.getElement(locator).getText();
     }
 
-    protected boolean isVisible(By locator) {
-        return this.getElement(locator).isDisplayed();
-    }
-
     protected List<WebElement> findAllVisible(By locator) {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
+    public Object executeJs(String script, Object... args) {
+        return ((JavascriptExecutor) driver).executeScript(script, args);
+    }
+
+    public void scrollIntoViewCenter(WebElement element) {
+        executeJs("arguments[0].scrollIntoView({block: 'center'});", element);
+    }
+
     protected void scrollToTop() {
-        new Actions(driver)
-            .scrollByAmount(0, -10000)
-            .perform();
+        executeJs("window.scrollTo(0, 0);");
     }
 
     public void ribbonSearch(String term) {
