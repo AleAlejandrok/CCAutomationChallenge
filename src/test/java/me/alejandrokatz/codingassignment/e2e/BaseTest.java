@@ -18,7 +18,7 @@ public class BaseTest {
         options.addArguments("--start-maximized", "--disable-extensions");
 
         if (Boolean.getBoolean("headless") || Boolean.parseBoolean(System.getenv("CI"))) {
-            options.addArguments("--headless=new", "--window-size=1920,1080");
+            options.addArguments("--headless=new", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
         }
 
         driver = new ChromeDriver(options);

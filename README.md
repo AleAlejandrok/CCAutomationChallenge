@@ -1,7 +1,14 @@
+# Coding Assignment
+
+This repository contains the completed solutions for the 3 coding assignments covering **Web Automation (Selenium)**, **API Automation (REST-Assured)**, and **Java Refactoring & Unit Testing**.
+
 ## Project Structure
 
 ```text
 CC_CodingAssignment/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                            # GitHub Actions CI pipeline
 ├── src/
 │   ├── main/java/me/alejandrokatz/codingassignment/
 │   │   ├── facades/
@@ -28,8 +35,14 @@ CC_CodingAssignment/
 
 ---
 
-## Execute all tests from the project root:
+## How to Execute Tests
+
+Execute all tests from the project root:
 
 ```bash
 mvn test
 ```
+
+## Continuous Integration (GitHub Actions)
+
+Tests can also be run via GH Actions, which I implemented for kicks.
